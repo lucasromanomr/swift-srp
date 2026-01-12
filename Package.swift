@@ -19,8 +19,12 @@ let package = Package(
         .package(url: "https://github.com/adam-fowler/big-num", from: "2.0.0"),
     ],
     targets: [
-        .target(name: "SRP", dependencies: ["BigNum", "Crypto"]),
-        .testTarget(
-            name: "SRPTests", dependencies: ["SRP"]),
+        .target(
+            name: "SRP", 
+            dependencies: [
+                "Crypto"
+                .product(name: "BigNum", package: "big-num")
+            ]
+        )
     ]
 )
